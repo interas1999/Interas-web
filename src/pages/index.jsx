@@ -1,7 +1,7 @@
-import Image from 'next/image'
+import { useState } from 'react'
 import SEO from '@/components/SEO'
-import { useEffect } from 'react'
 import Typist from 'react-typist'
+import Carosuel from 'react-elastic-carousel'
 
 import {
   Container,
@@ -12,25 +12,21 @@ import {
   ApresentationWrapper,
   TextContainer,
   SecondImage,
-  TextApresentation
+  TextApresentation,
+  ProductsWrapper,
+  ProductCard,
+  ShowCaseWrapper
 } from '../styles/pages/Home'
 
 import logoBranca from '../../public/logo-branca.png'
 import coffe from '../assets/coffe.svg'
 
 export default function Home() {
-  // useEffect(() => {
-  // (function(s, z, c, h, a, t) {
-  //   s.SZchat = s.SZchat || function() {
-  //     (s.SZchat.q = s.SZchat.q || []).push(arguments)
-  //   }
-  //   t = z.createElement(c),
-  //     a = z.getElementsByTagName(c)[0]; t.async = 1
-  //   t.src = h + '/webchat/v2/szchat.js'; a.parentNode.insertBefore(t, a)
-  //   s.SZchat('cid', '5f736baa8aff6b5f29188083')
-  //   s.SZchat('host', h)
-  // })(window, document, 'script', 'https://interas.sz.chat')
-  // })
+  const [typeText, setTypeText] = useState(false)
+
+  setInterval(() => {
+    setTypeText(true)
+  }, 500)
 
   return (
     <Container>
@@ -59,14 +55,20 @@ export default function Home() {
       <ApresentationWrapper>
         <TextContainer >
           <TextApresentation> Procurando soluções em </TextApresentation>
-          <Typist stdTypingDelay={15} cursor={{ show: true, blink: true }} >
-          <TextApresentation > Automoção de chat ?</TextApresentation>
+
+          {typeText && (
+
+          <Typist onTypingDone={() => { setTypeText(false) }} stdTypingDelay={5} cursor={{ show: true, blink: true }} >
+          <TextApresentation > Automoção de Chat ?</TextApresentation>
           <Typist.Backspace count={20} delay={400} />
           <TextApresentation> HotSpot ? </TextApresentation>
           <Typist.Backspace count={9} delay={400} />
           <TextApresentation>elp Desk ? </TextApresentation>
+          <Typist.Backspace count={11} delay={400} />
 
           </Typist>
+
+          )}
 
           <p>
             Somos uma empresa integradora de
@@ -91,7 +93,85 @@ export default function Home() {
         />
         </aside>
 
+        <div>
+          <img src="/wall.svg" alt="wall"/>
+        </div>
+
       </ApresentationWrapper>
+
+      <ProductsWrapper>
+        <h1>Conheça nossas soluções</h1>
+
+        <ProductCard>
+
+          <aside>
+          <h2>Somos a solução certa em Help Desk</h2>
+          <p>Say hello to your one-stop, relationship-building platform and
+            goodbye to outdated media databases: Muck Rack’s search
+             engine lets you discover and pitch relevant journalists in a much
+             more targeted way than legacy media databases. Building and sharing media
+             lists has never been easier, and since they’re automatically kept up-to-date
+             you can finally stop spending time maintaining old media contact lists.
+             </p>
+          </aside>
+
+          <div>
+            <img src="/helpdesk.png" alt="helpdesk"/>
+
+          </div>
+
+        </ProductCard>
+
+        <ProductCard>
+
+          <div>
+            <img src="/chat.png" alt="mail"/>
+          </div>
+
+          <aside>
+          <h2>Automatize o atendimento da sua empresa</h2>
+          <p>Say hello to your one-stop, relationship-building platform and
+            goodbye to outdated media databases: Muck Rack’s search
+             engine lets you discover and pitch relevant journalists in a much
+             more targeted way than legacy media databases. Building and sharing media
+             lists has never been easier, and since they’re automatically kept up-to-date
+             you can finally stop spending time maintaining old media contact lists.
+             </p>
+          </aside>
+
+        </ProductCard>
+
+        <ProductCard>
+
+          <aside>
+          <h2>Faça parte da nossa rede de HotSpot</h2>
+          <p>Say hello to your one-stop, relationship-building platform and
+            goodbye to outdated media databases: Muck Rack’s search
+             engine lets you discover and pitch relevant journalists in a much
+             more targeted way than legacy media databases. Building and sharing media
+             lists has never been easier, and since they’re automatically kept up-to-date
+             you can finally stop spending time maintaining old media contact lists.
+             </p>
+          </aside>
+
+          <div>
+            <img src="/contact.png" alt="mail"/>
+
+          </div>
+
+        </ProductCard>
+
+      </ProductsWrapper>
+
+      <ShowCaseWrapper>
+
+            <Carosuel>
+              <p>maoews</p>
+              <h3>dwad</h3>
+              <strong></strong>
+            </Carosuel>
+
+      </ShowCaseWrapper>
 
     </Container>
   )

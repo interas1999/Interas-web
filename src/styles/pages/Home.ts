@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import Image from 'next/image'
 
 export const Container = styled.div`
+  width: 100%;
 
   display: flex;
   flex-direction: column;
@@ -16,6 +17,7 @@ export const Header = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
+
 
   > img {
     cursor: pointer;
@@ -53,7 +55,6 @@ export const NavText = styled.p`
 
 export const ApresentationWrapper = styled.div`
   display: flex;
-  width: 100%;
   height: 55vh;
   padding: 20px 200px 0px;
   background: #143954;
@@ -72,14 +73,23 @@ export const ApresentationWrapper = styled.div`
   }
 
   > aside {
-      img {
+     > img {
         width: 600px;
         height: 214px;
         position: absolute;
         bottom: 420px;
         right: 450px;
       }
+  }
 
+  > div {
+    > img {
+        position: absolute;
+        width: 261px;
+        height: 90px;
+        top: 100px;
+        right: 400px;
+    }
   }
 
 
@@ -131,4 +141,68 @@ export const TextContainer = styled.div`
 export const TextApresentation = styled.strong`
     font: 500 48px Raleway, Sans-serif;
     color: ${({ theme }) => theme.colors.textWhite};
+`
+export const ProductsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 50px 410px;
+
+
+  > h1 {
+      color: #203856;
+      font: 500 48px Raleway, Sans-serif;
+      text-align: center;
+
+  }
+
+`
+
+export const ProductCard = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 52px;
+
+  > aside {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+
+
+    > h2 {
+      color: #203856;
+      font: 500 38px Raleway, Sans-serif;
+      margin-bottom: 12px;
+    }
+
+    > p {
+        color: #333333;
+        font: 400 18px Raleway, Sans-serif;
+
+    }
+  }
+
+  > div {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      > img {
+          height: 250px;
+          width: 200px;
+      }
+  }
+
+`
+export const ShowCaseWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 410px;
+
 `

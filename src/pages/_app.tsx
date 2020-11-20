@@ -1,4 +1,5 @@
 import { AppProps } from 'next/app'
+import { useEffect } from 'react'
 import { ThemeProvider } from 'styled-components'
 
 import GlobalStyle from '../styles/global'
