@@ -1,23 +1,33 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
 
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
 
-  h1 {
-    font-size: 54px;
-    color: ${props => props.theme.colors.primary};
-    margin-top: 40px;
+
+`
+export const Header = styled.div`
+  background: ${({ theme }) => theme.colors.black};
+  width: 100%;
+  height: 64px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+
+`
+
+export const NavText = styled.p`
+  color: ${({ theme }) => theme.colors.textSecondWhite};
+  margin-left: 12px;
+  font: 500 18px Raleway, Sans-serif;
+  cursor: pointer;
+  transition:  0.3s;
+
+  &:hover {
+    color: #fff;
   }
 
-  p {
-    margin-top: 24px;
-    font-size: 24px;
-    line-height: 32px;
-  }
 `

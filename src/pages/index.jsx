@@ -1,7 +1,12 @@
-import { Container } from '../styles/pages/Home'
 import Image from 'next/image'
 import SEO from '@/components/SEO'
 import { useEffect } from 'react'
+
+import {
+  Container,
+  Header,
+  NavText
+} from '../styles/pages/Home'
 
 export default function Home() {
   useEffect(() => {
@@ -28,13 +33,11 @@ export default function Home() {
 
       <Header>
 
-        <Image />
-
-        <Home />
-        <QuemSomos />
-        <Solucoes />
-        <Produtos />
-        <Contato />
+        <NavText>Início</NavText>
+        <NavText>Quem Somos?</NavText>
+        <NavText>Soluções</NavText>
+        <NavText>Produtos</NavText>
+        <NavText>Contato</NavText>
 
       </Header>
 
