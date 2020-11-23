@@ -1,12 +1,13 @@
-import { useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import SEO from '@/components/SEO'
 import Typist from 'react-typist'
 import Carosuel from 'react-elastic-carousel'
+import * as Scroll from 'react-scroll'
+import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 
 import {
   Container,
   Header,
-  HeaderImage,
   NavText,
   NavWrapper,
   ApresentationWrapper,
@@ -15,14 +16,39 @@ import {
   TextApresentation,
   ProductsWrapper,
   ProductCard,
-  ShowCaseWrapper
+  ShowCaseWrapper,
+  CarosuelCard
 } from '../styles/pages/Home'
 
 import logoBranca from '../../public/logo-branca.png'
-import coffe from '../assets/coffe.svg'
 
 export default function Home() {
   const [typeText, setTypeText] = useState(false)
+
+  useEffect(() => {
+    Events.scrollEvent.register('begin', function(to, element) {
+      console.log('begin', arguments)
+    })
+
+    Events.scrollEvent.register('end', function(to, element) {
+      console.log('end', arguments)
+    })
+
+    scrollSpy.update()
+
+    return function cleanup() {
+      Events.scrollEvent.remove('begin')
+      Events.scrollEvent.remove('end')
+    }
+  }, [])
+
+  function scrollToTop() {
+    scroll.scrollToTop()
+  }
+
+  function scrollTo(number: number) {
+    scroll.scrollTo(number)
+  }
 
   setInterval(() => {
     setTypeText(true)
@@ -32,7 +58,7 @@ export default function Home() {
     <Container>
 
       <SEO
-        title="Interas"
+        title="Interas Gestão e Tecnologia"
         shouldExludeTitleSuffix
         image="logo.png"
       />
@@ -43,9 +69,9 @@ export default function Home() {
 
         <NavWrapper>
 
-        <NavText>Início</NavText>
-        <NavText>Quem Somos?</NavText>
-        <NavText>Soluções</NavText>
+        <NavText onClick={scrollToTop} >Início</NavText>
+        <NavText onClick={scrollToTop} >Quem Somos?</NavText>
+        <NavText onClick={() => { scrollTo(580) }} >Soluções</NavText>
         <NavText>Produtos</NavText>
         <NavText>Contato</NavText>
 
@@ -78,7 +104,7 @@ export default function Home() {
             tecnológica.
           </p>
 
-          <button onClick={() => {}} >Vamos começar</button>
+          <button onClick={() => { scrollTo(580) }} >Vamos começar</button>
 
         </TextContainer>
 
@@ -164,11 +190,80 @@ export default function Home() {
       </ProductsWrapper>
 
       <ShowCaseWrapper>
+            <h1>O que nossos cientes dizem</h1>
 
-            <Carosuel>
-              <p>maoews</p>
-              <h3>dwad</h3>
-              <strong></strong>
+            <Carosuel
+              enableTilt={true}
+              autoPlaySpeed={4000}
+              pagination={false}
+              className="carosuel"
+              enableAutoPlay={true}
+              showArrows={true}
+              easing="ease"
+            >
+
+              <CarosuelCard >
+                <img src="/roni.png" alt="Rodrigo Almirante"/>
+
+                <aside>
+
+                  <header>
+
+                  <img src="/hostdime.png" alt="HostDime"/>
+
+                  <strong>A big part of my day to day at Small Girls PR is focused on pitching and media outreach, including developing story angles, networking with reporters and lots of writing, research and keeping up-to-date with the news.</strong>
+                  </header>
+                <div>
+                  <hr/>
+                  <strong>Roni Freire</strong>
+                  <p>CEO HostDime</p>
+                </div>
+                </aside>
+
+              </CarosuelCard>
+
+              <CarosuelCard>
+                <img src="/marconde.png" alt="Rodrigo Almirante"/>
+
+                <aside>
+
+                  <header>
+
+                  <img src="/pgprime.png" alt="HostDime"/>
+
+                  <strong>A big part of my day to day at Small Girls PR is focused on pitching and media outreach, including developing story angles, networking with reporters and lots of writing, research and keeping up-to-date with the news.</strong>
+                  </header>
+                <div>
+                  <hr/>
+                  <strong>Abélio e Marcondes Olivéria</strong>
+                  <p>CEO e CTO PGPrime</p>
+                </div>
+                </aside>
+
+              </CarosuelCard>
+
+              <CarosuelCard>
+                <img src="/thiago.png" alt="Rodrigo Almirante"/>
+
+                <aside>
+
+                  <header>
+
+                  <img src="/nemo.png" alt="HostDime" style={{ width: 70, height: 70 }} />
+
+                  <strong>
+                  is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                  </strong>
+                  </header>
+                <div>
+                  <hr/>
+                  <strong>Thiago Salem</strong>
+                  <p>Fundador Nemo Sushi</p>
+                </div>
+                </aside>
+
+              </CarosuelCard>
+
             </Carosuel>
 
       </ShowCaseWrapper>

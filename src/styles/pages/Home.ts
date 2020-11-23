@@ -17,6 +17,8 @@ export const Header = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
+  position: fixed;
+  z-index: 99999999999;
 
 
   > img {
@@ -54,14 +56,29 @@ export const NavText = styled.p`
 `
 
 export const ApresentationWrapper = styled.div`
+  margin-top: 60px;
   display: flex;
   height: 55vh;
-  padding: 20px 200px 0px;
+  padding: 0px 200px  0px 200px;
   background: #143954;
   background-image: url('/homepage-intro-pattern.png');
+  transition: 0.2s;
 
-  background-size: auto 70%;
+
+
+  background-size: auto 80%;
   background-repeat: repeat-x;
+
+  @media (max-width: 1200px) {
+    padding: 0px 50px  0px 50px;
+  }
+
+  @media (max-width: 1000px) {
+    justify-content: center;
+    align-items: center;
+    margin-top: 0px;
+    background-size: auto 100%;
+  }
 
   > img {
 
@@ -69,7 +86,27 @@ export const ApresentationWrapper = styled.div`
     height: 390px;
     position: absolute;
     top: 64px;
-    right: 720px;
+    right: 25vw;
+    transition: 0.2s;
+
+
+    @media (max-width: 1560px) {
+      & {
+        right: 15vw;
+      }
+    }
+
+    @media (max-width: 1360px) {
+      & {
+        right: 5vw;
+      }
+    }
+
+    @media (max-width: 1000px) {
+      & {
+        display: none;
+      }
+    }
   }
 
   > aside {
@@ -77,9 +114,29 @@ export const ApresentationWrapper = styled.div`
         width: 600px;
         height: 214px;
         position: absolute;
-        bottom: 420px;
-        right: 450px;
+        bottom: 450px;
+        right: 15vw;
+         transition: 0.2s;
+
+
+        @media (max-width: 1560px) {
+          & {
+            right: 5vw;
+          }
+        }
+
+        @media (max-width: 1360px) {
+          & {
+            right: 0vw;
+          }
+        }
+
+        @media (max-width: 1000px) {
+      & {
+        display: none;
       }
+    }
+    }
   }
 
   > div {
@@ -88,7 +145,29 @@ export const ApresentationWrapper = styled.div`
         width: 261px;
         height: 90px;
         top: 100px;
-        right: 400px;
+        right: 15vw;
+        transition: 0.2s;
+
+
+        @media (max-width: 1560px) {
+      & {
+        right: 5vw;
+      }
+
+
+    }
+
+      @media (max-width: 1360px) {
+        & {
+          right: 0vw;
+        }
+      }
+
+      @media (max-width: 1000px) {
+        & {
+          display: none;
+        }
+      }
     }
   }
 
@@ -98,7 +177,7 @@ export const ApresentationWrapper = styled.div`
 
 export const SecondImage = styled.img`
     width: 600px;
-    height: 260px;
+    height: 240px;
     position: absolute;
     bottom: 240px;
     right: 150px;
@@ -107,6 +186,7 @@ export const SecondImage = styled.img`
 export const TextContainer = styled.div`
   width: 600px;
   z-index: 92828;
+  margin-top: 12px;
 
   > p {
     font: 400 22px Raleway, Sans-serif;
@@ -125,6 +205,7 @@ export const TextContainer = styled.div`
       padding: 10px 16px;
       background: #40a9bd;
       border-radius: 6px;
+      border: none;
       width: 143px;
       height: 40px;
       font: 500 14px Raleway, Sans-serif;
@@ -148,7 +229,7 @@ export const ProductsWrapper = styled.div`
   justify-content: center;
   align-items: center;
 
-  padding: 50px 410px;
+  padding: 50px 20%;
 
 
   > h1 {
@@ -201,8 +282,99 @@ export const ProductCard = styled.div`
 `
 export const ShowCaseWrapper = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 50px 410px;
+  flex-direction: column;
+  padding: 50px 320px;
+  background-image: url('/background.png');
+  background-size: cover;
+  border-top: 1px solid #ccc;
 
+  h1 {
+    margin-left: 55px;
+    color: #203856;
+    font: 500 38px Raleway, Sans-serif;
+    margin-bottom: 12px;
+  }
+
+
+  .sc-dlfnbm {
+    cursor: pointer;
+    border: none;
+    transition: 0.4s;
+    box-shadow: 0 0 30px rgba(50, 50, 93, 0.25);
+    &:hover {
+      box-shadow: 0 0 100px rgba(50, 50, 93, 0.25);
+
+    }
+  }
+
+
+
+`
+export const CarosuelCard = styled.div`
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 50px 100px -20px rgba(50, 50, 93, 0.25) !important;
+  border: none;
+
+
+  display: flex;
+  flex-direction: row;
+
+
+  img {
+    height: 400px;
+    width: 35%;
+    pointer-events: none;
+  }
+
+  > aside {
+    padding: 25px 25px 25px 25px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    > header {
+      display: flex;
+      flex-direction: column;
+
+      > img {
+        height: 50px;
+        width: 322px;
+        margin-bottom: 12px;
+      }
+
+      > strong {
+        color: #121214;
+        font: 400 22px Raleway, Sans-serif;
+      }
+    }
+
+    > div {
+      display: flex;
+      flex-direction: column;
+
+      > hr {
+        color: #dddddd;
+        height: 2px;
+        background: #dddddd;
+        border: none;
+        width: 20px;
+        border-radius: 5px;
+        margin-bottom: 6px;
+      }
+
+      strong {
+        color: #338d9d;
+        font: 500 18px Raleway, Sans-serif;
+      }
+
+      p {
+        color: #828282;
+        font: 400 18px Raleway, Sans-serif;
+      }
+    }
+
+
+  }
 `

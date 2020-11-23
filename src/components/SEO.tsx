@@ -16,7 +16,7 @@ export default function SEO({
   shouldIndexPage = true
 }: SEOProps) {
   const pageTitle = `${title} ${
-    !shouldExludeTitleSuffix ? '| Interas' : ''
+    !shouldExludeTitleSuffix ? '| Interas Gestão e Tecnologia' : ''
   }`
 
   const pageImage = image
